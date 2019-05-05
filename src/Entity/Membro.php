@@ -34,6 +34,7 @@ class Membro
     
     public function __construct() {
         $this->dataVinculo = new \DateTime();
+        
     }
 
     public function getCpf(): ?string

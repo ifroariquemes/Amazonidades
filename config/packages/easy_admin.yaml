@@ -16,7 +16,9 @@ easy_admin:
               - encerrada                            
     Membro:
       class: App\Entity\Membro
+      controller: App\Controller\MembroController
       list:
+          sort: ['nome', 'ASC']
           fields:
               - nome
               - cla

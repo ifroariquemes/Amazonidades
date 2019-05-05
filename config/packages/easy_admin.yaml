@@ -1,0 +1,42 @@
+easy_admin:
+  site_name: 'Amazonidades'
+  entities:
+    Pontuacao:
+      class: App\Entity\Pontuacao
+      label: 'Pontuação'
+    Campanha:
+      class: App\Entity\Campanha
+      form:
+          fields:
+              - nome
+              - { property: 'dataInicio', label: 'Data início' }
+              - dataFim
+              - { property: 'descricao', label: 'Descrição' }
+              - visivel
+              - encerrada                            
+    Membro:
+      class: App\Entity\Membro
+      list:
+          fields:
+              - nome
+              - cla
+      form:
+        fields:
+            - cpf
+            - nome
+            - { property: 'dataVinculo', label: 'Data vínculo' }
+            - { property: 'cla', label: 'Clã' }
+    Cla:
+      class: App\Entity\Cla
+      label: 'Clã'
+      list:
+        fields:
+            - nome
+            - { property: 'logo', type: 'image', base_path: '/uploads/logos' }
+            - { property: 'descricao', label: 'Descrição' }
+            - membros
+      form:
+        fields:
+          - nome
+          - { property: 'logoArquivo', type: 'file' }
+          - { property: 'descricao', label: 'Descrição' }

@@ -48,5 +48,15 @@ class HomeController extends AbstractController {
            'clas' => $clas 
         ]);
     }
+    
+    /**
+     * @Route("/membros", name="app_membros")
+     */
+    public function membros(): Response {
+        $clas = $this->getDoctrine()->getRepository(Cla::class)->findAll();
+        return $this->render('home/membros.html.twig',[
+           'clas' => $clas 
+        ]);
+    }
 
 }

@@ -45,6 +45,7 @@ class Cla {
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Membro", mappedBy="cla")
+     * @ORM\OrderBy({"nome" = "ASC"})
      */
     private $membros;
 

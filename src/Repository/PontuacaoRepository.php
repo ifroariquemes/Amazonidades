@@ -20,9 +20,9 @@ class PontuacaoRepository extends ServiceEntityRepository
     }
     
     public function groupByCla(\App\Entity\Campanha $campanha) {
-        $query = ' SELECT p.cla_id, c.nome, sum(p.pontos) total FROM pontuacao p ';
-        $query.= ' JOIN cla c ON c.id = p.cla_id ';
-        $query.= ' WHERE p.campanha_id = :ci ';
+        $query = ' SELECT c.id, c.nome, coalesce(sum(p.pontos),0) total FROM cla c ';
+        $query.= ' LEFT JOIN pontuacao p ON c.id = p.cla_id ';
+        $query.= ' AND p.campanha_id = :ci ';
         $query.= ' GROUP BY p.cla_id, c.nome ';
         $query.= ' ORDER BY sum(p.pontos) DESC ';
         $rsm = new \Doctrine\ORM\Query\ResultSetMapping;
